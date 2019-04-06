@@ -1,51 +1,85 @@
+# Hugo config file
+
 baseURL = "https://waltlenu.it"
-title = "waltlenu.it - NeoCortex Cold Storage"
+title = "waltlenu"
 
 defaultContentLanguage = "en"
 languageCode = "en-us"
-theme = "simplicity"
+theme = "hermit"
 
-enableEmoji = true
-enableRobotsTXT = true
-pygmentsCodeFences = true
-pygmentsStyle = "native"
-pygmentsUseClasses =  true
-
-disqusShortname = "test"
-googleAnalytics = ""
+enableGitInfo = true
+pygmentsCodefences  = true
+pygmentsUseClasses  = true
+# Maximum number of items in the RSS feed.
+rssLimit = 20  # Maximum number of items in the RSS feed.
+copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License." # This message is only used by the RSS template.
+enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/functions/emojify/
+# googleAnalytics = "UA-123-45"
+# disqusShortname = "yourdiscussshortname"
 
 [author]
-  gravatarEmail = "test@example.com"
-  homepageText = "waltlenu.it - NeoCortex Cold Storage"
-  name = "Walter `waltlenu` Lenuzza"
-  rss = "/posts/index.xml"
-[imaging]
-  anchor = "smart"
-  resampleFilter = "box"
-  quality = 75
-[[menu.pages]]
-  name = "Projects"
-  weight = -100
-  identifier = "projects"
-  url = "/projects/"
-[[menu.pages]]
-  name = "Photos"
-  weight = -90
-  identifier = "photos"
-  url = "/photos/"
-[outputs]
-  home = ["HTML"]
-  page = ["HTML"]
-  section = ["HTML", "RSS"]
-  taxonomy = ["HTML", "RSS"]
-  taxonomyTerm = ["HTML"]
+  name = "Walter Lenuzza"
+
+[blackfriday]
+  # hrefTargetBlank = true
+  # noreferrerLinks = true
+  # nofollowLinks = true
+
+[taxonomies]
+  tag = "tags"
+  # Categories are disabled by default.
+
 [params]
-  adsenseClient = ''
-  adsenseSlot = ''
-  description = "NeoCortex Cold Storage"
-  licence = "[Some Rights Reserved](http://creativecommons.org/licenses/by-sa/4.0/)."
-  displayPostLanguage = true
-[permalinks]
-  posts = "/:year/:month/:day/:slug/"
-[pygmentsOptions]
-  linenos = false
+  dateform        = "2 Jan 2006"
+  dateformShort   = "2 Jan"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04"
+
+  # Metadata mostly used in document's head
+  # description = ""
+  # images = [""]
+  themeColor = "#494f5c"
+
+  homeSubtitle = "NeoCortex Cold Storage"
+  footerCopyright = ' &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+  # bgImg = ""  # Homepage background-image URL
+
+  # Prefix of link to the git commit detail page. GitInfo must be enabled.
+  # gitUrl = "https://github.com/username/repository/commit/"
+
+  # Toggling this option needs to rebuild SCSS, requires Hugo extended version
+  justifyContent = false  # Set "text-align: justify" to `.content`.
+
+  # Add custom css
+  # customCSS = ["css/foo.css", "css/bar.css"]
+
+  # Social Icons
+  # Check https://github.com/Track3/hermit#social-icons for more info.
+  [[params.social]]
+    name = "twitter"
+    url = "https://twitter.com/waltlenu"
+
+  [[params.social]]
+    name = "github"
+    url = "https://github.com/waltlenu"
+
+  [[params.social]]
+    name = "linkedin"
+    url = "https://linkedin.com/in/waltlenu"
+
+[menu]
+
+  [[menu.main]]
+    name = "Posts"
+    url = "posts/"
+    weight = 10
+
+  [[menu.main]]
+    name = "Tags"
+    url = "tags/"
+    weight = 10
+
+  [[menu.main]]
+    name = "About"
+    url = "about"
+    weight = 20

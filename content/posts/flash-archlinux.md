@@ -1,18 +1,12 @@
 ---
-title: "Flash Arch Linux"
+title: "Flash ArchLinux"
 date: 2019-01-03T13:31:26Z
-language: en
-categories: [
-  "notes"
-]
-tags: [
-  "arch",
-  "flash",
-  "iso",
-  "linux"
-]
+tags:
+  - ArchLinux
+  - Flash
+  - ISO
+  - Linux
 ---
-
 Download:
 ```
 wget http://mirror.rackspace.com/archlinux/iso/2019.01.01/archlinux-2019.01.01-x86_64.iso

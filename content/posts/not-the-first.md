@@ -1,13 +1,8 @@
 ---
 title: "(Not) My First Post"
 date: 2018-12-30T17:06:51Z
-categories: [
-  "post"
-]
-tags: [
-  "blog"
-]
-language: en
+tags:
+  - Blog
 ---
 Here we go again. (Yet) Another attempt at publishing something. Not that it was ever my thing, I never post anything online, I don't use social networks and to be frank, I'm awful at even keeping in touch with people. 
 

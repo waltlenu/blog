@@ -1,22 +1,15 @@
 ---
-title: "Install Arch Linux on Lenovo ThinkPad X1 Carbon 5th Generation"
+title: "Install Arch Linux on ThinkPad X1 Carbon 5th gen"
 date: 2019-01-03T14:38:04Z
-language: en
-categories: [
-  "notes"
-]
-tags: [
-  "arch",
-  "x1carbon",
-  "linux"
-]
+tags:
+  - ArchLinux
+  - Linux
+  - X1 Carbon
 ---
+First, from Windows 10, set up the fingerprint scanner and enroll fingers. Linux driver does not support the process. Shut down.
 
-First, from Windows 10, set up fingerprint scannerm enroll fingers. Shut down.
-
-Plug in power and ethernet cable and flash drive. Powere on, press Enter and F12, boot from USB flash drive.
-
-Bear with ack of scaling on a HiDPI display
+Plug in power and Ethernet cable and flash drive. Power on, press Enter and F12, boot from USB flash drive.  
+Bear with the lack of scaling on a HiDPI display.
 
 Test keyboard, set root password, enable SSHd, print ethernet's IP address
 ```
