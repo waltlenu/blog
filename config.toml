@@ -38,7 +38,7 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
   # Metadata mostly used in document's head
   # description = ""
   # images = [""]
-  themeColor = "#494f5c"
+  themeColor = "#282828"
 
   homeSubtitle = "NeoCortex Cold Storage"
   footerCopyright = ' &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
@@ -51,7 +51,7 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
   justifyContent = false  # Set "text-align: justify" to `.content`.
 
   # Add custom css
-  # customCSS = ["css/foo.css", "css/bar.css"]
+  customCSS = ["css/custom.css"]
 
   # Social Icons
   # Check https://github.com/Track3/hermit#social-icons for more info.

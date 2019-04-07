@@ -8,10 +8,10 @@ tags:
 ---
 First, from Windows 10, set up the fingerprint scanner and enroll fingers. Linux driver does not support the process. Shut down.
 
-Plug in power and Ethernet cable and flash drive. Power on, press Enter and F12, boot from USB flash drive.  
+Plug in power and Ethernet cable and flash drive. Power on, press Enter and F12, boot from USB flash drive.
 Bear with the lack of scaling on a HiDPI display.
 
-Test keyboard, set root password, enable SSHd, print ethernet's IP address
+Test keyboard, set `root`'s password, enable SSHd, print ethernet's IP address
 ```
 showkey --scancodes
 whoami
@@ -30,29 +30,32 @@ Ensure `$TERM` is set correctly:
 TERM=xterm
 ```
 
-Set keyboard layout
+Set keyboard layout:
 ```
 loadkeys us
 ```
 
-Update the system clock
+Update the system clock:
 ```
 timedatectl set-ntp true
 ```
 
-Verify Internet connection
+Verify Internet connection:
 ```
 ping archlinux.org
 ```
 
-Ensure UEFI boot entries are clear
+Ensure UEFI boot entries are clear:
 ```
 efibootmgr -v
 
-# Boot0000* debian
-# Boot0001* ubuntu
-# Boot0002* Linux Boot Manager
+Boot0000* debian
+Boot0001* ubuntu
+Boot0002* Linux Boot Manager
+```
 
+Delete unnecessary boot entries:
+```
 efibootmgr -b 0000 -B
 ```
 
@@ -84,29 +87,29 @@ parted -s /dev/nvme0n1 unit s print
 parted -s /dev/nvme0n1 unit MB print
 ```
 
-Create the LUKS encrypted container
+Create the LUKS encrypted container:
 ```
 cryptsetup luksFormat --type luks2 /dev/nvme0n1p3
 ```
 
-Open the LUKS encrypted container
+Open the LUKS encrypted container:
 ```
 cryptsetup open /dev/nvme0n1p3 root
 ls -l /dev/mapper/root
 ```
 
-Create `vfat` filesystem on ESP EFI boot partition
+Create `vfat` filesystem on ESP EFI boot partition:
 ```
 mkfs.vfat /dev/nvme0n1p1
 ```
 
-Create `swap` filesystem on second partion
+Create `swap` filesystem on second partion:
 ```
 mkswap /dev/nvme0n1p2
 swapon /dev/nvme0n1p2
 ```
 
-Create `btrfs` filesystem on main partition
+Create `btrfs` filesystem on main partition:
 ```
 mkfs.btrfs -L root /dev/mapper/root
 mount /dev/mapper/root /mnt -o defaults,noatime,autodefrag
@@ -119,32 +122,32 @@ mount /dev/mapper/root /mnt/home -o subvol=/home,defaults,noatime,autodefrag
 mount -l | grep /mnt
 ```
 
-Bootstrap Arch Linux
+Bootstrap Arch Linux:
 ```
 pacstrap /mnt base base-devel intel-ucode btrfs-progs sudo networkmanager iptables \
   terminus-font openssh neovim git xorg xorg-xinit xorg-xeyes cinnamon firefox lightdm
 ```
 
-Filesystem table
+Filesystem table:
 ```
 genfstab -U /mnt >> /mnt/etc/fstab
 cat /mnt/etc/fstab
 ```
 
-Change root
+Change root:
 ```
 arch-chroot /mnt
 nvim /etc/fstab
 ```
 
-Set clock
+Set clock:
 ```
 ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
 hwclock --systohc
 systemctl enable systemd-timesyncd.service
 ```
 
-Set locale, keymap and console font
+Set locale, keymap and console font:
 ```
 echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
 echo 'LANG=en_US.UTF-8' > /etc/locale.conf
@@ -153,11 +156,12 @@ echo 'FONT=ter-132n' >> /etc/vconsole.conf
 locale-gen
 ```
 
-SSD: enable Periodic TRIM
+SSD: enable Periodic TRIM:
 ```
 systemctl enable fstrim.timer
 ```
-Set hostname
+
+Set hostname:
 ```
 echo 'workbench' > /etc/hostname
 
@@ -170,12 +174,12 @@ cat > /etc/hosts <<- EOM
 EOM
 ```
 
-Revert to traditional network interface names
+Revert to traditional network interface names:
 ```
 ln -s /dev/null /etc/systemd/network/99-default.link
 ```
 
-Configure systemd-network manager
+Configure systemd-network manager:
 ```
 cat > /etc/systemd/network/20-wired.network <<- EOM
 [Match]
@@ -185,7 +189,7 @@ Name=eth0
 DHCP=yes
 EOM
 
-cat > /etc/systemd/network/21-wireless_lan.network <<- EOM          
+cat > /etc/systemd/network/21-wireless_lan.network <<- EOM
 [Match]
 Name=wlan0
 
@@ -195,7 +199,7 @@ EOM
 
 cat > /etc/systemd/network/21-wireless_wan.network <<- EOM
 [Match]
-Name=wwan0   
+Name=wwan0
 
 [Network]
 DHCP=yes
@@ -205,7 +209,7 @@ systemctl disable systemd-networkd.service systemd-resolved.service
 systemctl enable NetworkManager
 ```
 
-Configure firewall
+Configure firewall:
 ```
 cat > /etc/iptables/iptables.rules <<- EOM
 *filter
@@ -229,12 +233,12 @@ EOM
 systemctl enable iptables
 ```
 
-Disable IPv6 (temp)
+Disable IPv6 (temp):
 ```
 echo 'ipv6.disable=1' > /etc/sysctl.d/99-disable_ipv6.conf
 ```
 
-Configure bootloader: set pacman hook
+Configure bootloader: set pacman hook:
 ```
 mkdir /etc/pacman.d/hooks
 
@@ -265,18 +269,18 @@ echo 'MODULES=(intel_agp i915)' > /etc/mkinitcpio.conf
 echo 'HOOKS=(base systemd autodetect keyboard sd-vconsole modconf block sd-encrypt sd-lvm2 filesystems fsck)' >> /etc/mkinitcpio.conf
 ```
 
-Generate `initramfs`
+Generate `initramfs`:
 ```
 mkinitcpio -p linux
 ```
 
-Ignore these warning:
+Ignore these warnings:
 ```
 ==> WARNING: Possibly missing firmware for module: aic94xx
 ==> WARNING: Possibly missing firmware for module: wd719x
 ```
 
-Configure bootloader: identify root partition's UUID and add entry
+Configure bootloader: identify root partition's UUID and add entry:
 ```
 mkdir -p /boot/loader/entries
 
@@ -296,12 +300,12 @@ options rd.luks.name=cdfe533a-fc9f-4b76-b00d-f604b9c96fa4=root root=/dev/mapper/
 EOM
 ```
 
-Write bootloader
+Write bootloader:
 ```
 bootctl --path=/boot install
 ```
 
-Enable udev suspend
+Enable udev suspend:
 ```
 cat > /etc/udev/rules.d/99-lowbat.rules <<- EOM
 # Suspend the system when battery level drops to 5% or lower
@@ -309,7 +313,7 @@ SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-5]",
 EOM
 ```
 
-User management
+User management:
 ```
 passwd root
 
@@ -317,9 +321,10 @@ useradd -m -G wheel waltlenu
 echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel
 passwd waltlenu
 ```
-Exit chroot, unmount filesystems, reboot
+
+Exit chroot, unmount filesystems, reboot:
 ```
-exit 
+exit
 umount -R /mnt
 reboot
 ```
