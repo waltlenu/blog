@@ -1,0 +1,27 @@
+html {
+  background-color: #282828;
+}
+
+body {
+  color: #bdae93;
+}
+
+footer {
+  color: #bdae93;
+}
+
+a {
+  color: #bdae93;
+}
+
+a:hover {
+  color: #fbf1c7;
+}
+
+#mobile-menu {
+  background-color: #3c3836;
+}
+
+#site-header {
+  background-color: #3c3836;
+}
