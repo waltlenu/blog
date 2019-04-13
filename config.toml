@@ -1,6 +1,6 @@
 # Hugo config file
 
-baseURL = "https://waltlenu.it"
+baseURL = "https://waltlenu.netlify.com"
 title = "waltlenu"
 
 defaultContentLanguage = "en"
