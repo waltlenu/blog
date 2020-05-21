@@ -1,3 +1,3 @@
-# Site
+# Blog
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/e42f00dc-1cca-463d-9243-e5b8acb0e6e7/deploy-status)](https://app.netlify.com/sites/waltlenu/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7cc24534-0ac5-499a-8a2e-c19309601bff/deploy-status)](https://app.netlify.com/sites/waltlenu/deploys)
