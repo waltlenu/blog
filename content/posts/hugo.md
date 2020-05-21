@@ -17,7 +17,7 @@ Preview the site locally, including drafted, expired and future content:
 hugo server -D -E -F --disableFastRender --cleanDestinationDir
 ```
 
-Add theme:
+Add the theme:
 
 ```bash
 git submodule add https://github.com/luizdepra/hugo-coder.git themes/coder
