@@ -14,7 +14,7 @@ First, from Windows 10, set up the fingerprint scanner and enroll fingers. Linux
 Plug in power and Ethernet cable and flash drive. Power on, press Enter and F12, boot from USB flash drive.
 Bear with the lack of scaling on a HiDPI display.
 
-Test keyboard, set `root`'s password, enable SSHd, print ethernet's IP address:
+Test keyboard, set `root`'s password, enable `SSHd`, print ethernet's IP address:
 
 ```bash
 showkey --scancodes
@@ -144,10 +144,11 @@ mount -l | grep /mnt
 Bootstrap Arch Linux:
 
 ```bash
-pacstrap /mnt base base-devel linux \
-  intel-ucode btrfs-progs sudo networkmanager iptables \
-  networkmanager iptables mkinitcpio \
-  terminus-font openssh neovim git
+pacstrap /mnt \
+  base linux linux-firmware \
+  intel-ucode mkinitcpio btrfs-progs lvm2 mdadm \
+  sudo networkmanager iptables openssh \
+  base-devel neovim git
 ```
 
 Filesystem table:
@@ -378,14 +379,17 @@ cd ~/src/tmp
 git clone https://aur.archlinux.org/yay-bin.git ~/src/tmp/yay-bin
 cd ~/src/tmp/yay-bin
 makepkg -si
+rm -rf ~/src/tmp/yay-bin
 ```
 
-Install required
+Install required:
 
 ```bash
 yay -Sy \
-  terminus-font openssh neovim git pulseaudio xorg xorg-xinit xorg-xeyes cinnamon firefox light
-dm termite google-chrome slack-desktop
+  base linux linux-firmware \
+  intel-ucode mkinitcpio btrfs-progs lvm2 mdadm \
+  sudo networkmanager iptables openssh \
+  base-devel neovim git chezmoi
 ```
 
 Reference wiki [page](https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon_(Gen_5)).
