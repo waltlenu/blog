@@ -74,8 +74,8 @@ url = "tags"
 weight = 3
 
 [[languages.en.menu.main]]
-name = "Blog"
-url = "categories/blog"
+name = "Series"
+url = "series"
 weight = 4
 
 [[languages.en.menu.main]]
