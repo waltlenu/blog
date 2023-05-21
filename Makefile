@@ -10,8 +10,10 @@
 # Clear all SUFFIXes
 .SUFFIXES:
 
-# Configure SHELL
-SHELL := /usr/bin/env bash
+# Setting SHELL to bash allows bash commands to be executed by recipes.
+# Options are set to exit when a recipe line exits non-zero or a piped command fails.
+SHELL = /usr/bin/env bash -o pipefail
+.SHELLFLAGS = -ec
 
 ## TARGETS
 
@@ -23,35 +25,35 @@ default: all
 .PHONY: all
 all: | banner clean generate
 
-# banner target
+# Print a banner, binaries versions
 .PHONY: banner
 banner:
-	echo 'waltlenu.it - Static blog, powered by Hugo'
+	echo 'waltlenu.it - Static blog, powered by Hugo'; echo
 	hugo version
+	git-cliff --version
+	semver --version
 	echo
 
-# generate target
+# Generate website
 .PHONY: generate
 generate:
 	hugo -D -E -F -d public --cleanDestinationDir
 
-# clean target
+# Clean generated output
 .PHONY: clean
 clean:
-	echo -n 'Deleting: ./public ./resources/_gen ...'
-	rm -rf ./public ./resources/_gen
-	echo -e "\e[36m\e[1m Done!\e[0m"
+	echo 'Deleting generated output…'
+	echo -n './public '; rm -rf ./public && echo '         ✅'
+	echo -n './resource/_gen '; rm -rf ./resources/_gen && echo '  ✅'
 	echo
 
-# preview target
+# Generate and sever website locally
 .PHONY: preview
 preview:
 	hugo server -D -E -F --disableFastRender --cleanDestinationDir
 
-.PHONY: changelog
-changelog:
-	git-chglog -o CHANGELOG.md --next-tag `semtag final -s minor -o`
+# Create a new git tag with semantyc versioning and annotate with changelog
+.PHONY: bump
+bump:
+	git-cliff | git tag -a $$(semver bump patch `git describe --abbrev=0`) -F -
 
-.PHONY: release
-release:
-	semtag final -s minor
