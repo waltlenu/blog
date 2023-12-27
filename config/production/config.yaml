@@ -1,0 +1,8 @@
+enableRobotsTXT: true
+
+minify:
+  minifyOutput: true
+
+params:
+  # enable google analytics, opengraph, twitter-cards and schema
+  env: production

@@ -1,0 +1,12 @@
+buildDrafts: true
+buildFuture: true
+buildExpired: true
+
+enableRobotsTXT: false
+
+minify:
+  minifyOutput: false
+
+params:
+  # disable google analytics, opengraph, twitter-cards and schema
+  env: development
