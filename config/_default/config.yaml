@@ -1,0 +1,86 @@
+baseURL: "https://waltlenu.it"
+title: "waltlenu.it"
+
+enableEmoji: true
+enableInlineShortcodes: true
+pygmentsUseClasses: true
+
+taxonomies:
+  series: series
+  tag: tags
+
+theme: "PaperMod"
+
+params:
+  keywords: [Blog, Portfolio]
+  author: "Walter Lenuzza"
+
+  # PaperMod theme profile-mode
+  profileMode:
+    enabled: true
+    title: "Walter Lenuzza"
+    subtitle: "Platform Engineer"
+    imageUrl: "avatar.jpg"
+    imageTitle: "avatar"
+    buttons:
+      - name: About
+        url: about
+      - name: Blog
+        url: posts
+
+  socialIcons:
+    - name: linkedin
+      url: "https://uk.linkedin.com/in/waltlenu"
+    - name: twitter
+      url: "https://twitter.com/waltlenu"
+    - name: github
+      url: "https://github.com/waltlenu"
+
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: false
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: false
+  tocopen: false
+
+# Languages
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: true
+languages:
+  en:
+    contentDir: content/en
+    disabled: false
+    languageCode: en-GB
+    languageDirection: ltr
+    languageName: English
+    weight: 1
+    menu:
+      main:
+        - identifier: posts
+          name: posts
+          url: /posts/
+          weight: 10
+        - identifier: tags
+          name: tags
+          url: /tags/
+          weight: 20
+        - identifier: archive
+          name: archive
+          url: /archive
+          weight: 30
+  it:
+    contentDir: content/it
+    disabled: true
+    languageCode: it-IT
+    languageDirection: ltr
+    languageName: Italiano
+    weight: 2
