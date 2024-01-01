@@ -1,11 +1,10 @@
 ---
 draft: false
 title: "License"
-date: "2019-04-06T23:52:54+01:00"
+date: "2018-10-21T01:02:19+01:00"
 description: "Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)"
 tags: ["license"]
 series: []
-# hideSummary: false
 ---
 
 Licensing this work under **Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**.
