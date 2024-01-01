@@ -12,8 +12,9 @@ taxonomies:
 theme: "PaperMod"
 
 params:
-  keywords: [Blog, Portfolio]
+  keywords: [Blog, Homepage, Portfolio]
   author: "Walter Lenuzza"
+  description: "Walter Lenuzza's homepage"
 
   # PaperMod theme profile-mode
   profileMode:
