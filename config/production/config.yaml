@@ -1,8 +1,16 @@
+###
+### Hugo configuration
+###
+### Ref. https://gohugo.io/getting-started/configuration
+###
+
 enableRobotsTXT: true
 
+# Minification
 minify:
+  disableXML: true
   minifyOutput: true
 
 params:
-  # enable google analytics, opengraph, twitter-cards and schema
+  # enable opengraph, twitter-cards and schema
   env: production

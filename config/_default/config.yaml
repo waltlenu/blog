@@ -1,16 +1,68 @@
+###
+### Hugo configuration
+###
+### Ref. https://gohugo.io/getting-started/configuration
+###
+
 baseURL: "https://waltlenu.it"
 title: "waltlenu.it"
 
+# Locale
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: true
+languages:
+  en:
+    contentDir: content/en
+    disabled: false
+    languageCode: en-GB
+    languageDirection: ltr
+    languageName: English
+    weight: 1
+    menu:
+      main:
+        - identifier: about
+          name: about
+          url: /about
+          weight: 1
+        - identifier: blog
+          name: blog
+          url: /blog
+          weight: 2
+  it:
+    contentDir: content/it
+    disabled: true
+    languageCode: it-IT
+    languageDirection: ltr
+    languageName: Italiano
+    weight: 2
+
+# Taxonomies
+# Ref. https://gohugo.io/content-management/taxonomies
+taxonomies: {}
+
+# Formats
+outputs:
+  home:
+    - html
+    - amp
+    - rss
+    - json # necessary for search
+  page:
+    - html
+    - amp
+
+# When building, removes files from destination not found in static directories
+cleanDestinationDir: true
+
+# Enable Emoji emoticons support for page content
 enableEmoji: true
-enableInlineShortcodes: true
-pygmentsUseClasses: true
 
-taxonomies:
-  series: series
-  tag: tags
+# Install PaperMod theme as golang module
+module:
+  imports:
+    - path: github.com/adityatelange/hugo-PaperMod
 
-theme: "PaperMod"
-
+# Parameters (mostly used by PaperMod)
 params:
   keywords: [Blog, Homepage, Portfolio]
   author: "Walter Lenuzza"
@@ -21,21 +73,21 @@ params:
     enabled: true
     title: "Walter Lenuzza"
     subtitle: "Platform Engineer"
-    imageUrl: "avatar.jpg"
-    imageTitle: "avatar"
+    imageUrl: "avatar.webp"
+    imageTitle: "Walter Lenuzza avatar"
     buttons:
       - name: About
         url: about
       - name: Blog
-        url: posts
+        url: blog
 
   socialIcons:
     - name: linkedin
       url: "https://uk.linkedin.com/in/waltlenu"
-    - name: twitter
-      url: "https://twitter.com/waltlenu"
     - name: github
       url: "https://github.com/waltlenu"
+    - name: bluesky
+      url: "https://bsky.app/profile/waltlenu.it"
 
   ShowReadingTime: true
   ShowShareButtons: false
@@ -52,36 +104,3 @@ params:
   hideSummary: false
   showtoc: false
   tocopen: false
-
-# Languages
-defaultContentLanguage: en
-defaultContentLanguageInSubdir: true
-languages:
-  en:
-    contentDir: content/en
-    disabled: false
-    languageCode: en-GB
-    languageDirection: ltr
-    languageName: English
-    weight: 1
-    menu:
-      main:
-        - identifier: posts
-          name: posts
-          url: /posts/
-          weight: 10
-        - identifier: tags
-          name: tags
-          url: /tags/
-          weight: 20
-        - identifier: archive
-          name: archive
-          url: /archive
-          weight: 30
-  it:
-    contentDir: content/it
-    disabled: true
-    languageCode: it-IT
-    languageDirection: ltr
-    languageName: Italiano
-    weight: 2
