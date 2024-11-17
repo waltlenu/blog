@@ -1,0 +1,24 @@
+# Fix any fixable errors
+fix: true
+
+# Configure rules
+# Ref. https://github.com/DavidAnson/markdownlint/blob/v0.32.1/README.md#options
+config:
+  # Use text editor soft wrap instead
+  line-length: false
+
+# Ignore files referenced by .gitignore
+gitignore: true
+
+# Define glob expressions to use
+globs:
+  - "**/*.md"
+
+# Disable progress on stdout
+noProgress: true
+
+# Show found files on stdout
+showFound: false
+
+# Disable banner message on stdout
+noBanner: true

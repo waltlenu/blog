@@ -30,8 +30,6 @@ all: | banner clean generate
 banner:
 	echo 'waltlenu.it - Static blog, powered by Hugo'; echo
 	hugo version
-	git-cliff --version
-	semver --version
 	echo
 
 # Generate website
@@ -51,9 +49,4 @@ clean:
 .PHONY: preview
 preview:
 	hugo server -D -E -F --disableFastRender --cleanDestinationDir
-
-# Create a new git tag with semantyc versioning and annotate with changelog
-.PHONY: bump
-bump:
-	git-cliff | git tag -a $$(semver bump patch `git describe --abbrev=0`) -F -
 

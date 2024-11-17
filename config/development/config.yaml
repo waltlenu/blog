@@ -1,3 +1,9 @@
+###
+### Hugo configuration
+###
+### Ref. https://gohugo.io/getting-started/configuration
+###
+
 buildDrafts: true
 buildFuture: true
 buildExpired: true
