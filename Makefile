@@ -23,7 +23,7 @@ default: all
 
 # By convention, performs a complete run (in order)
 .PHONY: all
-all: | banner clean generate
+all: | banner clean lint generate
 
 # Print a banner, binaries versions
 .PHONY: banner
@@ -31,6 +31,12 @@ banner:
 	echo 'waltlenu.it - Static blog, powered by Hugo'; echo
 	hugo version
 	echo
+
+# Lint Markdown
+.PHONY: Lint
+lint:
+	echo 'Lint Markdown …'; echo
+	markdownlint-cli2
 
 # Generate website
 .PHONY: generate
@@ -40,7 +46,7 @@ generate:
 # Clean generated output
 .PHONY: clean
 clean:
-	echo 'Deleting generated output…'
+	echo 'Deleting generated output …'
 	echo -n './public '; rm -rf ./public && echo '         ✅'
 	echo -n './resource/_gen '; rm -rf ./resources/_gen && echo '  ✅'
 	echo
