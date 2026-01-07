@@ -5,6 +5,7 @@
 # Builds a Hugo site hosted on a Cloudflare Worker.
 #
 # The Cloudflare Worker automatically installs Node.js dependencies.
+# Ref. https://gohugo.io/host-and-deploy/host-on-cloudflare
 #------------------------------------------------------------------------------
 
 main() {
