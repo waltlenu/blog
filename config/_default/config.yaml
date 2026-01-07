@@ -72,7 +72,7 @@ params:
   profileMode:
     enabled: true
     title: "Walter Lenuzza"
-    subtitle: "Platform Engineer"
+    subtitle: "Architect, Tech Lead, Engineer"
     imageUrl: "avatar.webp"
     imageTitle: "Walter Lenuzza avatar"
     buttons:
